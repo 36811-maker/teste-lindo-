@@ -1,0 +1,251 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyBloom | Seu progresso floresce</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <a href="#inicio" class="logo">🌷 StudyBloom</a>
+
+        <nav>
+            <a href="#inicio" class="nav-link active">🏠 Início</a>
+            <a href="#planner" class="nav-link">📚 Planner</a>
+            <a href="#habitos" class="nav-link">🌱 Hábitos</a>
+            <a href="#missoes" class="nav-link">💻 CodeQuest</a>
+            <a href="#jardim" class="nav-link">🌷 Meu jardim</a>
+            <a href="#foco" class="nav-link">⏱️ Foco</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button id="themeBtn" class="secondary-btn">🌙 Mudar tema</button>
+            <p>Pequenos passos, grandes flores. 🌸</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+
+        <header class="topbar">
+            <div>
+                <p class="eyebrow">SEU ESPAÇO DE CRESCIMENTO</p>
+                <h1 id="greeting">Olá! Vamos florescer? 🌷</h1>
+                <p id="today"></p>
+            </div>
+            <div class="level-card">
+                <span>🌟 Seu nível</span>
+                <strong id="level">1</strong>
+                <span id="xpText">0 XP</span>
+                <div class="progress-track">
+                    <div id="xpBar" class="progress-fill"></div>
+                </div>
+            </div>
+        </header>
+
+        <section id="inicio" class="section">
+            <div class="welcome-card">
+                <div>
+                    <span class="pill">UM DIA DE CADA VEZ ✨</span>
+                    <h2>Seu futuro começa<br>com o que você faz hoje.</h2>
+                    <p>Organize seus estudos, complete desafios e cultive seu jardim.</p>
+                    <a href="#planner" class="primary-btn">Organizar meus estudos →</a>
+                </div>
+                <div class="welcome-flower">🌸</div>
+            </div>
+
+            <div class="stats-grid">
+                <article class="stat-card pink">
+                    <span>📚</span>
+                    <p>Tarefas concluídas</p>
+                    <h2 id="completedCount">0</h2>
+                </article>
+                <article class="stat-card green">
+                    <span>🌱</span>
+                    <p>Hábitos de hoje</p>
+                    <h2 id="habitCount">0/0</h2>
+                </article>
+                <article class="stat-card purple">
+                    <span>💻</span>
+                    <p>Missões concluídas</p>
+                    <h2 id="missionCount">0</h2>
+                </article>
+                <article class="stat-card yellow">
+                    <span>🌷</span>
+                    <p>Plantas cultivadas</p>
+                    <h2 id="plantCount">0</h2>
+                </article>
+            </div>
+
+            <div class="content-grid">
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Agenda de hoje</h3>
+                            <p>Um passo de cada vez.</p>
+                        </div>
+                        <a href="#planner">Ver tudo →</a>
+                    </div>
+                    <div id="todayTasks" class="item-list"></div>
+                </article>
+
+                <article class="panel">
+                    <div class="panel-heading">
+                        <div>
+                            <h3>Minha evolução 🌟</h3>
+                            <p>Seu esforço faz diferença.</p>
+                        </div>
+                    </div>
+                    <div class="progress-info">
+                        <span>Progresso das tarefas</span>
+                        <strong id="taskProgressText">0%</strong>
+                    </div>
+                    <div class="progress-track">
+                        <div id="taskProgressBar" class="progress-fill"></div>
+                    </div>
+                    <div class="progress-info">
+                        <span>Hábitos de hoje</span>
+                        <strong id="habitProgressText">0%</strong>
+                    </div>
+                    <div class="progress-track">
+                        <div id="habitProgressBar" class="progress-fill green-fill"></div>
+                    </div>
+                    <div class="motivation">
+                        🌼 Cada pequena conquista ajuda você a crescer!
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="planner" class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">ORGANIZE SUA ROTINA</p>
+                    <h2>📚 Planner de estudos</h2>
+                    <p>Transforme suas tarefas em conquistas.</p>
+                </div>
+            </div>
+
+            <form id="taskForm" class="panel form-grid">
+                <label>Título da tarefa
+                    <input id="taskTitle" type="text" placeholder="Ex.: Estudar JavaScript" required>
+                </label>
+                <label>Matéria
+                    <input id="taskSubject" type="text" placeholder="Ex.: Programação" required>
+                </label>
+                <label>Data
+                    <input id="taskDate" type="date" required>
+                </label>
+                <label>Prioridade
+                    <select id="taskPriority">
+                        <option value="Baixa">Baixa</option>
+                        <option value="Média" selected>Média</option>
+                        <option value="Alta">Alta</option>
+                    </select>
+                </label>
+                <button class="primary-btn" type="submit" id="taskSubmit">+ Adicionar tarefa</button>
+            </form>
+
+            <div class="filter-row">
+                <input id="taskSearch" type="search" placeholder="🔎 Buscar tarefa ou matéria...">
+                <select id="taskFilter">
+                    <option value="Todas">Todas as tarefas</option>
+                    <option value="Pendentes">Pendentes</option>
+                    <option value="Concluídas">Concluídas</option>
+                </select>
+            </div>
+
+            <div id="taskList" class="item-list"></div>
+        </section>
+
+        <section id="habitos" class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">CULTIVE SUA ROTINA</p>
+                    <h2>🌱 Desafios de hábitos</h2>
+                    <p>Pequenas atitudes também são grandes conquistas.</p>
+                </div>
+            </div>
+
+            <form id="habitForm" class="panel inline-form">
+                <input id="habitTitle" type="text" placeholder="Ex.: Ler por 15 minutos" required>
+                <button class="primary-btn" type="submit">+ Criar hábito</button>
+            </form>
+
+            <div id="habitList" class="item-list"></div>
+        </section>
+
+        <section id="missoes" class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">APRENDA BRINCANDO</p>
+                    <h2>💻 CodeQuest</h2>
+                    <p>Resolva desafios e ganhe experiência.</p>
+                </div>
+            </div>
+
+            <div id="missionList" class="mission-grid"></div>
+            <div id="quizArea" class="panel quiz-area hidden"></div>
+        </section>
+
+        <section id="jardim" class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">SEU ESFORÇO FLORESCE</p>
+                    <h2>🌷 Meu jardim virtual</h2>
+                    <p>Conclua atividades para cultivar novas plantas.</p>
+                </div>
+            </div>
+
+            <div class="garden-banner">
+                <div>
+                    <h3>Um jardim cheio de conquistas 🌿</h3>
+                    <p>Cada planta representa seu progresso.</p>
+                    <p id="gardenMessage">Seu jardim está esperando pela primeira semente!</p>
+                </div>
+                <span class="garden-big-flower">🌻</span>
+            </div>
+
+            <div id="gardenGrid" class="garden-grid"></div>
+        </section>
+
+        <section id="foco" class="section">
+            <div class="section-heading">
+                <div>
+                    <p class="eyebrow">UM MOMENTO PARA VOCÊ</p>
+                    <h2>⏱️ Hora do foco</h2>
+                    <p>Escolha uma duração e concentre-se em uma tarefa.</p>
+                </div>
+            </div>
+
+            <div class="focus-card">
+                <span>🌸 TEMPO DE CONCENTRAÇÃO</span>
+                <div id="timer" class="timer">25:00</div>
+                <div class="timer-options">
+                    <button class="secondary-btn timer-preset" data-minutes="15">15 min</button>
+                    <button class="secondary-btn timer-preset selected" data-minutes="25">25 min</button>
+                    <button class="secondary-btn timer-preset" data-minutes="45">45 min</button>
+                </div>
+                <div class="timer-controls">
+                    <button id="startTimer" class="primary-btn">▶ Iniciar</button>
+                    <button id="resetTimer" class="secondary-btn">↻ Reiniciar</button>
+                </div>
+                <p id="timerMessage">Você consegue! Concentre-se em uma coisa por vez. 💗</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>Feito com carinho 🌷 StudyBloom — Seu progresso floresce aqui.</p>
+        </footer>
+
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
